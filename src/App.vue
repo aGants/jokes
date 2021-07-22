@@ -16,7 +16,7 @@ export default {
 <style lang="scss">
 $screen-md: 768px;
 %transition {
- transition: .4s ease-out;
+ transition: .2s ease-out;
 }
 $first-color: #f0f0f0;
 $second-color: #99DDCC;
@@ -59,7 +59,7 @@ $third-color: #F9F7F7;
       max-width: 40px;
       height: 40px;
       cursor: pointer;
-      transition: .2s ease-out;
+      @extend %transition;
       &:hover {
         fill: $second-color;
       }
@@ -80,6 +80,7 @@ $third-color: #F9F7F7;
     background-color: $first-color;
     border: 2px solid $first-color;
     border-radius: 4px;
+    @extend %transition;
     @include w-from($screen-md){
       width: 700px;
      }
