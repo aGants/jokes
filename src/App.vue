@@ -71,22 +71,21 @@ $third-color: #F9F7F7;
 }
 
 .search {
-  
-  text-align: center;
   height: 43px;
   margin: 20px 0;
+  text-align: center;
   @include w-from($screen-md){
     margin: 50px 0 20px;
   }
   &__input {
-    @include w-from($screen-md){
-      width: 800px;
-     }
-    width: 310px;
+    width: 250px;
     padding: 12px;
     background-color: $first-color;
     border: 2px solid $first-color;
     border-radius: 4px;
+    @include w-from($screen-md){
+      width: 700px;
+     }
     &:focus, &:active {
       border: 2px solid $second-color;
       outline: none;
