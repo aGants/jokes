@@ -1,7 +1,13 @@
 <template>
   <ul class="list">
     <li class="list-joke" v-for="joke in jokes" :key=joke.id>
-      <p class="list-joke-text"> {{ joke }} </p>
+      <div class="list-joke-text"> 
+        <p v-if="joke.type === 'single' "> {{ joke.joke }} </p>
+        <div v-else>
+          <p> {{ joke.setup }} </p>
+          <p> {{ joke.delivery }} </p>
+        </div>
+      </div>
       <svg class="list-joke-like">
         <use href="../assets/like.svg#like" />
       </svg>
@@ -14,13 +20,26 @@ export default {
   name: 'JokesList',
   data () {
     return {
-      jokes: ['Saying that Java is nice because it works on every OS is like saying that anal sex is nice because it works on every gender', 'шутка2 inerf ienrf', 'шутка3', 'шутка4'],
+      jokes: [''],
       isLoading: false,
       error: null
     }
   },
+  mounted () {
+    this.axios
+      .get('https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,racist,sexist&amount=10')
+      .then(response => {
+        this.jokes = response.data.jokes;
+        console.log(response.data.jokes)
+      })
+      .catch(error => {
+        console.log(error);
+        this.error = true;
+      })
+      .finally(() => (this.isLoading = false));
+  },
   methods: {
-    
   }
 }
 </script>
+
