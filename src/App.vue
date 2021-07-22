@@ -21,8 +21,9 @@ $screen-md: 768px;
 %transition {
  transition: .4s ease-out;
 }
-$first-color: #F9F7F7;
+$first-color: #f0f0f0;
 $second-color: #99DDCC;
+$third-color: #F9F7F7;
 
 @mixin w-from($screen) {
   @media (min-width: $screen) {
@@ -70,12 +71,18 @@ $second-color: #99DDCC;
 }
 
 .search {
-  width: 1000px;
-  margin: 70px 0 20px;
+  
   text-align: center;
   height: 43px;
+  margin: 20px 0;
+  @include w-from($screen-md){
+    margin: 50px 0 20px;
+  }
   &__input {
-    width: 70%;
+    @include w-from($screen-md){
+      width: 800px;
+     }
+    width: 310px;
     padding: 12px;
     background-color: $first-color;
     border: 2px solid $first-color;
