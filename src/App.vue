@@ -93,4 +93,44 @@ $third-color: #F9F7F7;
   }
 }
 
+@keyframes dot-keyframes {
+  0% {
+    opacity: .4;
+    transform: scale(1, 1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2, 1.2);
+  }
+
+  100% {
+    opacity: .4;
+    transform: scale(1, 1);
+  }
+}
+
+.loading {
+  text-align: center;
+  width: 200px;
+  
+  &-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 20px 5px;
+    border-radius: 10px;
+    background: $second-color;
+    animation: dot-keyframes 1.5s infinite ease-in-out;
+    
+    &:nth-child(2) {
+      animation-delay: .5s;
+    }
+    
+    &:nth-child(3) {
+      animation-delay: 1s;
+    }
+  }
+}
+
 </style>
