@@ -1,17 +1,14 @@
 <template>
-  <Search />
   <JokesList />
 </template>
 
 <script>
 import JokesList from './components/JokesList.vue'
-import Search from './components/Search.vue'
 
 export default {
   name: 'App',
   components: {
     JokesList,
-    Search
   }
 }
 </script>

@@ -1,6 +1,15 @@
 <template>
+
+  <div className="search">
+    <input 
+      type="text"
+      placeholder="Введите слово" 
+      className="search__input"
+      />
+  </div>
+
   <ul class="list">
-    <li class="list-joke" v-for="joke in jokes" :key=joke.id>
+    <li class="list-joke" v-for="joke in jokes" :key="joke.id">
       <div class="list-joke-text"> 
         <p v-if="joke.type === 'single' "> {{ joke.joke }} </p>
         <div v-else>
@@ -13,6 +22,7 @@
       </svg>
     </li>
   </ul>
+
 </template>
 
 <script>
@@ -21,11 +31,12 @@ export default {
   data () {
     return {
       jokes: [''],
+      search: '',
       isLoading: false,
       error: null
     }
   },
-  mounted () {
+  created () {
     this.axios
       .get('https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,racist,sexist&amount=10')
       .then(response => {
@@ -38,7 +49,7 @@ export default {
       .finally(() => (this.isLoading = false));
   },
   methods: {
-  }
+    },
 }
 </script>
 
