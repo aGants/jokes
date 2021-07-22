@@ -3,9 +3,10 @@
   <div className="search">
     <input 
       type="text"
-      placeholder="Введите слово" 
+      placeholder="Type a word or words" 
       className="search__input"
-      />
+      v-model="search"
+    />
   </div>
 
   <div v-if="error">
@@ -20,7 +21,7 @@
     </div>
 
     <ul v-else class="list">
-      <li class="list-joke" v-for="joke in jokes" :key="joke.id">
+      <li class="list-joke" v-for="joke in filteredJokes" :key="joke.id">
         <div class="list-joke-text"> 
           <p v-if="joke.type === 'single' "> {{ joke.joke }} </p>
           <div v-else>
@@ -56,13 +57,24 @@ export default {
       })
       .catch(error => {
         console.log(error);
-        console.log(123);
         this.error = true;
       })
       .finally(() => (this.loading = false));
   },
   methods: {
-    },
+  },
+  computed: {
+    filteredJokes: function () {
+      return this.jokes.filter(joke => {
+        if (joke.type === "single") {
+          return joke.joke.toLowerCase().match(this.search.toLowerCase())
+        } else {
+          return joke.setup.toLowerCase().match(this.search.toLowerCase()) || 
+          joke.delivery.toLowerCase().match(this.search.toLowerCase())
+        }
+      })
+    }
+  }
 }
 </script>
 
