@@ -19,7 +19,7 @@ $screen-md: 768px;
  transition: .4s ease-out;
 }
 $joke-color: #F9F7F7;
-$liked-color: #99DDCC;
+$first-color: #99DDCC;
 
 @mixin w-from($screen) {
   @media (min-width: $screen) {
@@ -42,23 +42,24 @@ $liked-color: #99DDCC;
   &-joke {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 20px;
     width: 250px;
     padding: 20px 10px;
     margin: 30px 0;
     border-radius: 5px;
     box-shadow: 0 4px 16px 0 rgb(0 0 0 / 8%);
-    @extend %transition;
-    &:hover {
-      // box-shadow: 0 4px 16px 0 rgb(0 0 0 / 30%);
-    }
     @include w-from($screen-md){
       width: 550px;
       padding: 20px 20px;
     }
     &-like {
+      max-width: 40px;
+      height: 40px;
       cursor: pointer;
+      transition: .2s ease-out;
       &:hover {
+        fill: $first-color;
       }
     }
   }
