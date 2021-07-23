@@ -1,4 +1,13 @@
-# jokes
+# [Приложение: список анекдотов](https://agants.github.io/jokes/)
+
+![](image.jpg)
+
+## Функционал:
+* Список из 10 анекдотов (API: https://sv443.net/jokeapi/v2/) с поиском по слову
+* Возможность отметить лайком + визуализация отметки, сохранение информации
+* Vue.js
+* Sass
+
 
 ## Project setup
 ```
@@ -9,16 +18,3 @@ npm install
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

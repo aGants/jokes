@@ -52,7 +52,7 @@ export default {
   },
   created () {
     this.axios
-      .get('https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,racist,sexist&amount=10')
+      .get('https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&amount=10')
       .then(response => {
         this.jokes = response.data.jokes;
       })

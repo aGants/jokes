@@ -52,6 +52,7 @@ $third-color: #f8f8f8;
     background: $first-color;
     border-radius: 5px;
     box-shadow: 0 4px 16px 0 rgb(0 0 0 / 8%);
+    @extend %transition;
     @include w-from($screen-md){
       width: 600px;
       padding: 20px 20px;
