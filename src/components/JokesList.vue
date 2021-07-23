@@ -21,7 +21,7 @@
     </div>
 
     <ul v-else class="list">
-      <li class="list-joke" v-for="joke in filteredJokes" :key="joke.id">
+      <li class="list-joke" v-for="joke in filteredJokes" :key="joke.id" :class="{liked: joke.liked}">
         <div class="list-joke-text"> 
           <p v-if="joke.type === 'single' "> {{ joke.joke }} </p>
           <div v-else>
@@ -29,7 +29,7 @@
             <p> {{ joke.delivery }} </p>
           </div>
         </div>
-        <svg class="list-joke-like">
+        <svg class="list-joke-like" v-on:click="likedJoke(joke)">
           <use href="../assets/like.svg#like" />
         </svg>
       </li>
@@ -43,10 +43,11 @@ export default {
   name: 'JokesList',
   data () {
     return {
-      jokes: [''],
+      jokes: [],
+      likes: [],
       search: '',
       loading: true,
-      error: null
+      error: null,
     }
   },
   created () {
@@ -62,6 +63,15 @@ export default {
       .finally(() => (this.loading = false));
   },
   methods: {
+    likedJoke (joke) {
+      if (!joke.liked) {
+        joke.liked = true;
+        this.likes.push(joke)
+      } else {
+        joke.liked = false;
+        this.likes.splice(this.likes.indexOf(joke), 1)
+        }
+    }
   },
   computed: {
     filteredJokes: function () {
@@ -76,5 +86,6 @@ export default {
     }
   }
 }
+
 </script>
 
